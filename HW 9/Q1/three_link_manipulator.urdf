@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<robot name="two_link_manipulator">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="black">
+          <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="link1">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0.5 0 0"/>
+      <material name="red">
+	 <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <link name="link2">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0.5 0 0"/>
+      <material name="blue">
+	 <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+    <link name="link3">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0.5 0 0"/>
+      <material name="blue">
+	 <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+   <link name="linkEff">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0.5 0 0"/>
+      <material name="blue">
+	 <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link> 
+
+  <joint name="base_to_link1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0"/>
+    <limit effort = "1000.0" lower="-1.57" upper = "1.57" velocity="0.5"/>
+  </joint>
+
+  <joint name="link1_to_link2" type="prismatic">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <axis xyz="0 0 1"/>
+     <origin xyz="0 0 0" rpy="1.57 0 1.57"/>
+    <limit effort = "1000.0" lower="0" upper = ".2" velocity="0.5"/>
+  </joint>
+
+    <joint name="link2_to_link3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <axis xyz="0 0 1"/>
+     <origin xyz="0 0 0" rpy="1.57 0 0"/>
+    <limit effort = "1000.0" lower="0" upper = "3.14" velocity="0.5"/>
+  </joint>
+
+  <joint name="link3_to_linkEff" type="fixed">
+    <parent link="link3"/>
+    <child link="linkEff"/>
+    <axis xyz="0 0 0"/>
+     <origin xyz="0 -1 0" rpy="0 0 -1.57"/>
+  </joint> 
+
+</robot>

@@ -1,0 +1,8 @@
+<launch>
+  <node
+    pkg="hello_world"
+    type="hello"
+    name="hello_world"
+    output="screen"
+  />
+</launch>

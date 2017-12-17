@@ -1,0 +1,5 @@
+ROS:
+End Effector Position [-.629, .784, 0]
+
+D-H Formula
+End Effector Position [-.6356, .6372, 0]

@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim"/>
+
+  <param name="background_r" value="241" type="int"/>
+  <param name="background_g" value="90" type="int"/>
+  <param name="background_b" value="34" type="int"/> 
+
+  <node pkg="param" type="pubvelSpiral" name="pubvelSpiral"/>   
+</launch>
+
